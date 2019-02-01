@@ -12,7 +12,36 @@ const roll = (rock = 1, paper = 2, scisssor = 3) => {
     
 }
 
-$('.choice').on('click', function() {
+// rock(1) > scissor(3), rock(1) < paper(2), rock(1) = rock(1)
+// paper(2) > rock(1), paper(2) < scissor(3), paper(2) = paper(2)
+// scissor(3) > paper(2), scissor(3) < rock(1), scissor(3) = scissor(3)
+
+let pedra, papel, tesoura;
+const moves = {
+    poss1: !(pedra > tesoura),
+    poss2: !!(pedra > papel),
+    poss3: !(pedra = pedra),
+    poss4: !(papel > pedra),
+    poss5: !!(papel > tesoura),
+    poss6: !(papel = papel),
+    poss7: !(tesoura > paper),
+    poss8: !!(tesoura > pedra),
+    poss9: !(tesoura = tesoura)
+}
+
+console.log(moves)
+
+
+
+$('#rock').on('click', () => {
+    randomNumber();
+});
+
+$('#paper').on('click', () => {
+    randomNumber();
+});
+
+$('#scissor').on('click', () => {
     randomNumber();
 });
 
