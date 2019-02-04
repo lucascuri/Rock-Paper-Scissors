@@ -76,6 +76,9 @@ header > h1 {
 }
 
 .choice {
+    border: solid 4px white;
+    border-radius: 50%;
+    padding: 10px;
     display: inline-block;
     margin: 0 20px;
     transition: all 0.3s ease;
@@ -84,12 +87,6 @@ header > h1 {
 .choice:hover {
     cursor: pointer;
     background-color: #24272E;
-}
-
-.choice {
-    border: solid 4px white;
-    border-radius: 50%;
-    padding: 10px;
 }
 
 .choice img {
@@ -102,4 +99,22 @@ header > h1 {
     font-weight: bold;
     color: white;
     text-align: center;
+}
+
+.userWins {
+    border: solid green 5px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.compWins {
+    border: solid red 5px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.draw {
+    border: solid yellow 5px;
+    border-radius: 50%;
+    padding: 10px;
 }

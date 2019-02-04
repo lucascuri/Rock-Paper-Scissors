@@ -23,56 +23,6 @@ const result = (docResult, docScore, docScoreWinner, winner, m1, m2) => {
     }
 }
 
-// const game = (userChoice) => {
-//     const compChoice = getCompChoice();
-//     switch (userChoice + compChoice) {
-//         case "rs":
-//         userScore++;
-//         result_p.innerHTML = `User Wins! Rock covers scissor.`;
-//         userScore_span.innerHTML = `${userScore}:`;
-//         break;
-
-//         case "pr":
-//         userScore++;
-//         result_p.innerHTML = `User Wins! Paper covers rock.`;
-//         userScore_span.innerHTML = `${userScore}:`;
-//         break;
-
-//         case "sp":
-//         userScore++;
-//         result_p.innerHTML = `User Wins! Scissor covers paper`;
-//         userScore_span.innerHTML = `${userScore}:`;
-//         break;
-
-//         case "rp":
-//         compScore++;
-//         result_p.innerHTML = `Computer Wins! Paper covers rock.`;
-//         compScore_span.innerHTML = `${compScore}`;
-//         break;
-
-//         case "ps":
-//         compScore++;
-//         result_p.innerHTML = `Computer Wins! Scissor covers paper.`;
-//         compScore_span.innerHTML = `${compScore}`;
-//         break;
-
-//         case "sr":
-//         compScore++;
-//         result_p.innerHTML = `Computer Wins! Rock covers Scissor.`;
-//         compScore_span.innerHTML = `${compScore}`;
-//         break;
-
-//         case "rr":
-//         case "pp":
-//         case "ss":
-//         userScore++; compScore++;
-//         result_p.innerHTML = `It's a draw!`;
-//         userScore_span.innerHTML = `${userScore}:`;
-//         compScore_span.innerHTML = `${compScore}`;
-//         break;
-//     }
-// }
-
 const game = (userChoice) => {
     const compChoice = getCompChoice();
     switch (userChoice + compChoice) {
