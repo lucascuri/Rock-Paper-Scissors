@@ -3,6 +3,7 @@ const userScore_span = document.getElementById('user-score');
 const compScore_span = document.getElementById('comp-score');
 const scoreBoard_div = document.querySelector('.score-board');
 const result_div = document.querySelector('.result');
+const result_p = document.querySelector('.resultP');
 const rock_div = document.getElementById('r');
 const paper_div = document.getElementById('p');
 const scissor_div = document.getElementById('s');
@@ -13,7 +14,7 @@ const getCompChoice = () => {
     return roll[random];
 }
 
-const result_div = () {
+const result = () => {
 
 }
 
@@ -23,29 +24,40 @@ const game = (userChoice) => {
     switch (userChoice + compChoice) {
         // user wins
         case "rs":
-        case "pr":
-        case "sp":
         userScore++;
-        console.log(`USER WINS!`);
-        // console.log(`User score: ${userScore}, Computer score: ${compScore}`);
+        result_p.innerHTML = `User Wins! Rock covers scissor.`;
         userScore_span.innerHTML = `${userScore}:`;
         break;
-        // comp wins
+        case "pr":
+        userScore++;
+        result_p.innerHTML = `User Wins! Paper covers rock.`;
+        userScore_span.innerHTML = `${userScore}:`;
+        break;
+        case "sp":
+        userScore++;
+        result_p.innerHTML = `User Wins! Scissor covers paper`;
+        userScore_span.innerHTML = `${userScore}:`;
+        break;
         case "rp":
-        case "ps":
-        case "sr":
         compScore++;
-        console.log(`COMPUTER WINS!`);
-        // console.log(`User score: ${userScore}, Computer score: ${compScore}`);
+        result_p.innerHTML = `Computer Wins! Paper covers rock.`;
         compScore_span.innerHTML = `${compScore}`;
         break;
-        // draw
+        case "ps":
+        compScore++;
+        result_p.innerHTML = `Computer Wins! Scissor covers paper.`;
+        compScore_span.innerHTML = `${compScore}`;
+        break;
+        case "sr":
+        compScore++;
+        result_p.innerHTML = `Computer Wins! Rock covers Scissor.`;
+        compScore_span.innerHTML = `${compScore}`;
+        break;
         case "rr":
         case "pp":
         case "ss":
         userScore++; compScore++;
-        console.log(`Its a draw!`);
-        // console.log(`User score: ${userScore}, Computer score: ${compScore}`);
+        result_p.innerHTML = `It's a draw!`;
         userScore_span.innerHTML = `${userScore}:`;
         compScore_span.innerHTML = `${compScore}`;
         break;
