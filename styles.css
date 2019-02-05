@@ -78,20 +78,18 @@ header > h1 {
 .choice {
     border: solid 4px white;
     border-radius: 50%;
-    padding: 10px;
     display: inline-block;
     margin: 0 20px;
     transition: all 0.3s ease;
 }
 
+.choice > img {
+    padding: 10px;
+}
+
 .choice:hover {
     cursor: pointer;
     background-color: #24272E;
-}
-
-.choice img {
-    width: 100px;
-    height: 100px;
 }
 
 #action-msg {
@@ -101,20 +99,20 @@ header > h1 {
     text-align: center;
 }
 
-.userWins {
-    border: solid green 5px;
+.green-glow {
+    border: solid #4dcc7d 4px;
+    box-shadow: 0 0 10px #31b43a;
     border-radius: 50%;
-    padding: 10px;
 }
 
-.compWins {
-    border: solid red 5px;
+.red-glow {
+    border: solid #fc121b 4px;
+    box-shadow: 0 0 10px #d01115;
     border-radius: 50%;
-    padding: 10px;
 }
 
-.draw {
-    border: solid yellow 5px;
+.gray-glow {
+    border: solid #464646 4px;
+    box-shadow: 0 0 10px #25292b;
     border-radius: 50%;
-    padding: 10px;
 }

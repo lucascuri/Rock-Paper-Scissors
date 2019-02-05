@@ -3,7 +3,7 @@ const userScore_span = document.getElementById('user-score');
 const compScore_span = document.getElementById('comp-score');
 const scoreBoard_div = document.querySelector('.score-board');
 const result_div = document.querySelector('.result');
-const result_p = document.querySelector('.resultP');
+const result_p = document.querySelector('.result > p');
 const rock_div = document.getElementById('r');
 const paper_div = document.getElementById('p');
 const scissor_div = document.getElementById('s');
@@ -14,55 +14,70 @@ const getCompChoice = () => {
     return roll[random];
 }
 
-const result = (docResult, docScore, docScoreWinner, winner, m1, m2) => {
-    docResult.innerHTML = `${winner} wins! ${m1} covers ${m2}.`;
-    if (winner === 'User') {
-        docScore.innerHTML = `${docScoreWinner}:`;
-    } else {
-        docScore.innerHTML = `${docScoreWinner}`;
-    }
+const convertToWord = (letter) => {
+    if (letter === 'r') return 'Rock';
+    if (letter === 'p') return 'Paper';
+    if (letter === 's') return 'Scissor';
+}
+
+const win = (user, comp) => {
+    const smallUserWord = "user".fontsize(3).sub();
+    const smallCompWord = "comp".fontsize(3).sub();
+    const userChoice_div = document.getElementById(user);
+    userScore++;
+    userScore_span.innerHTML = `${userScore}`;
+    result_p.innerHTML = `${convertToWord(user)}${smallUserWord} beats ${convertToWord(comp)}${smallCompWord} . You win!`;
+    userChoice_div.classList.add('green-glow');
+    setTimeout(function() {
+        document.getElementById(user).classList.remove('green-glow');
+    }, 300)
+}
+
+const lost = (user, comp) => {
+    const smallUserWord = "user".fontsize(3).sub();
+    const smallCompWord = "comp".fontsize(3).sub();
+    const userChoice_div = document.getElementById(user);
+    compScore++;
+    compScore_span.innerHTML = `${compScore}`;
+    result_p.innerHTML = `${convertToWord(comp)}${smallUserWord} beats ${convertToWord(user)}${smallCompWord} . You lost!`;
+    userChoice_div.classList.add('red-glow');
+    setTimeout(function() {
+        document.getElementById(user).classList.remove('red-glow');
+    }, 300)
+}
+
+const draw = (user, comp) => {
+    const smallUserWord = "user".fontsize(3).sub();
+    const smallCompWord = "comp".fontsize(3).sub();
+    const userChoice_div = document.getElementById(user);
+    userScore_span.innerHTML = `${userScore}`;
+    compScore_span.innerHTML = `${compScore}`;
+    result_p.innerHTML = `${convertToWord(user)}${smallUserWord} equals ${convertToWord(comp)}${smallCompWord} . It's a draw!`;
+    userChoice_div.classList.add('gray-glow');
+    setTimeout(function() {
+        document.getElementById(user).classList.remove('gray-glow');
+    }, 300)
 }
 
 const game = (userChoice) => {
     const compChoice = getCompChoice();
     switch (userChoice + compChoice) {
         case "rs":
-        userScore++;
-        result(result_p, userScore_span, userScore, 'User', 'Rock', 'Scissor');
-        break;
-
         case "pr":
-        userScore++;
-        result(result_p, userScore_span, userScore, 'User', 'Paper', 'Rock');
-        break;
-
         case "sp":
-        userScore++;
-        result(result_p, userScore_span, userScore, 'User', 'Scissor', 'Paper');
+        win(userChoice, compChoice);
         break;
 
         case "rp":
-        compScore++;
-        result(result_p, compScore_span, compScore, 'Comp', 'Paper', 'Rock');
-        break;
-
         case "ps":
-        compScore++;
-        result(result_p, compScore_span, compScore, 'Comp', 'Scissor', 'Paper');
-        break;
-
         case "sr":
-        compScore++;
-        result(result_p, compScore_span, compScore, 'Comp', 'Rock', 'Scissor');
+        lost(userChoice, compChoice);
         break;
 
         case "rr":
         case "pp":
         case "ss":
-        userScore++; compScore++;
-        result_p.innerHTML = `It's a draw!`;
-        userScore_span.innerHTML = `${userScore}:`;
-        compScore_span.innerHTML = `${compScore}`; 
+        draw(userChoice, compChoice);
         break;
     }
 }
@@ -82,6 +97,3 @@ const main = () => {
 }
 
 main();
-
-
-
